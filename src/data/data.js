@@ -4,12 +4,13 @@ import favorite from '../assets/icons/menu/favorite.svg';
 import search from '../assets/icons/menu/search.svg';
 
 import Home from '../components/pages/Home/Home';
+import Search from '../components/pages/Search/Search';
 
 export const menuItems = [
   {
     id: 1,
     title: 'Home',
-    link: '/home',
+    link: '/',
     icon: home,
     component: Home,
   },
@@ -19,12 +20,13 @@ export const menuItems = [
   //   link: '/favorites',
   //   icon: favorite,
   // },
-  // {
-  //   id: 3,
-  //   title: 'Search Games',
-  //   link: '/search',
-  //   icon: search,
-  // },
+  {
+    id: 3,
+    title: 'Search Games',
+    link: '/search',
+    icon: search,
+    component: Search,
+  },
   // {
   //   id: 3,
   //   title: 'Preferences',

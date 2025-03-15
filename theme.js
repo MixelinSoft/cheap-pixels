@@ -1,6 +1,42 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+  components: {
+    MuiAppBar: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0px 4px 8px #640000',
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          boxShadow: '2px 0px 4px  #640000',
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          transition: 'background-color 0.3s ease',
+          '&:hover': {
+            backgroundColor: 'rgba(255, 23, 68, 0.3)',
+          },
+        },
+      },
+    },
+    MuiListItemButton: {
+      styleOverrides: {
+        root: {
+          transition: 'background-color 0.3s ease',
+          '&:hover': {
+            backgroundColor: 'rgba(255, 23, 68, 0.3)',
+          },
+        },
+      },
+    },
+  },
   palette: {
     mode: 'dark', // Тёмная тема
     primary: {

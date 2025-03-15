@@ -11,7 +11,13 @@ const Header = () => {
     dispatch(uiActions.setShowAsideMenu(true));
   };
   return (
-    <AppBar position={'sticky'} sx={{ backgroundColor: 'background.default' }}>
+    <AppBar
+      position={'sticky'}
+      sx={{
+        backgroundColor: 'background.default',
+        borderRadius: '0 0 12px 12px',
+      }}
+    >
       <Toolbar>
         <IconButton
           size='large'

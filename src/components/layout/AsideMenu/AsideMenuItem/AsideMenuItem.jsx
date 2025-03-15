@@ -4,11 +4,21 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { uiActions } from '../../../../store/slices/uiSlice';
 
 const AsideMenuItem = ({ item }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const navigateHandler = () => {
+    dispatch(uiActions.setShowAsideMenu(false));
+    navigate(item.link);
+  };
   return (
     <ListItem disablePadding>
-      <ListItemButton>
+      <ListItemButton onClick={navigateHandler}>
         <ListItemIcon>
           <img
             src={item.icon}

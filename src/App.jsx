@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import { menuItems } from './data/data';
 import Home from './components/pages/Home/Home';
 import Main from './components/layout/Main/Main';
+import PageNotFound from './components/pages/PageNotFound/PageNotFound';
 
 const App = () => {
   return (
@@ -14,15 +15,17 @@ const App = () => {
       <AsideMenu />
       <Main>
         <Routes>
+          <Route path='/' element={<Home />} />
           {menuItems.map((item) => {
             return (
               <Route
                 key={item.title}
-                path={item.path}
+                path={item.link}
                 element={<item.component />}
               />
             );
           })}
+          {/* <Route path='*' element={<PageNotFound />} /> */}
         </Routes>
       </Main>
     </Box>
