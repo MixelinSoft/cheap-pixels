@@ -15,10 +15,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 // Import Main Component
 import App from './App.jsx';
+import { BrowserRouter } from 'react-router';
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </Provider>,
 );

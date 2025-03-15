@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 // Import Icons
-import steam from '../../assets/icons/stores/steam.svg';
-import gog from '../../assets/icons/stores/gog.svg';
-import egs from '../../assets/icons/stores/egs.svg';
+import steam from '../../../assets/icons/stores/steam.svg';
+import gog from '../../../assets/icons/stores/gog.svg';
+import egs from '../../../assets/icons/stores/egs.svg';
 
 const StoreIcon = ({ store, link }) => {
   const icons = {

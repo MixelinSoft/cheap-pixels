@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getDeals } from '../../../services/web';
 import { useDispatch, useSelector } from 'react-redux';
-import GameCard from '../../../ui/GameCard/GameCard';
+import GameCard from '../../ui/GameCard/GameCard';
 import { Box } from '@mui/material';
 
 const Deals = () => {

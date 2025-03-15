@@ -8,6 +8,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#D50000', // Темно-красный
+      dark: '#640000', // Бордовый
     },
     background: {
       default: '#121212', // Глубокий чёрный фон
