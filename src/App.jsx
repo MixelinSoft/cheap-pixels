@@ -7,6 +7,7 @@ import { menuItems } from './data/data';
 import Home from './components/pages/Home/Home';
 import Main from './components/layout/Main/Main';
 import PageNotFound from './components/pages/PageNotFound/PageNotFound';
+import GamePage from './components/pages/GamePage/GamePage';
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
               />
             );
           })}
-          {/* <Route path='*' element={<PageNotFound />} /> */}
+          <Route path='/game/:gameID' element={<GamePage />} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Main>
     </Box>

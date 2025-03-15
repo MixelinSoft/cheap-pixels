@@ -70,6 +70,8 @@ const initialState = {
         'https://cdn.cloudflare.steamstatic.com/steam/apps/8190/capsule_sm_120.jpg?t=1593180404',
     },
   ],
+  findedGames: [],
+  currentGame: null,
 };
 // Create Slice
 export const gamesSlice = createSlice({
@@ -78,6 +80,12 @@ export const gamesSlice = createSlice({
   reducers: {
     addGames: (state, action) => {
       state.games = action.payload;
+    },
+    setFindedGames: (state, { payload }) => {
+      state.findedGames = payload;
+    },
+    setCurrentGame: (state, { payload }) => {
+      state.currentGame = payload;
     },
   },
 });

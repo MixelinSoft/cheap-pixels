@@ -30,6 +30,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           transition: 'background-color 0.3s ease',
+          color: '#B0B0B0',
           '&:hover': {
             backgroundColor: 'rgba(255, 23, 68, 0.3)',
           },
