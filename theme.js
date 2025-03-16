@@ -9,6 +9,15 @@ const theme = createTheme({
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          boxShadow: '0px 0px 16px #640000',
+          padding: '16px',
+          borderRadius: '16px',
+        },
+      },
+    },
     MuiDrawer: {
       styleOverrides: {
         paper: {
