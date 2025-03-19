@@ -128,3 +128,25 @@ table {
 body {
   font-family: Roboto;
 }
+
+/* Для Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212; /* цвет фона */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff1744; /* цвет ползунка */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d50000; /* цвет при наведении */
+}
+
+/* Для Firefox */

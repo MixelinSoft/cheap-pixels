@@ -1,7 +1,17 @@
 import { Box } from '@mui/material';
 
 const Main = ({ children }) => {
-  return <Box sx={{ minHeight: '100vh', padding: '12px' }}>{children}</Box>;
+  return (
+    <Box
+      sx={{
+        flexGrow: 1,
+        padding: '16px',
+        overflowY: 'hidden',
+      }}
+    >
+      {children}
+    </Box>
+  );
 };
 
 export default Main;

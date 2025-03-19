@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import Deals from './components/pages/Deals/Deals';
 import Header from './components/layout/Header/Header';
 import AsideMenu from './components/layout/AsideMenu/AsideMenu';
 import { Route, Routes } from 'react-router-dom';
@@ -11,7 +10,14 @@ import GamePage from './components/pages/GamePage/GamePage';
 
 const App = () => {
   return (
-    <Box sx={{ backgroundColor: 'background.default' }}>
+    <Box
+      sx={{
+        backgroundColor: 'background.default',
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <Header />
       <AsideMenu />
       <Main>

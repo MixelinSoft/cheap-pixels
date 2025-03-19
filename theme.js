@@ -48,21 +48,21 @@ const theme = createTheme({
     },
   },
   palette: {
-    mode: 'dark', // Тёмная тема
+    mode: 'dark',
     primary: {
-      main: '#FF1744', // Ярко-красный
+      main: '#FF1744',
     },
     secondary: {
-      main: '#D50000', // Темно-красный
-      dark: '#640000', // Бордовый
+      main: '#D50000',
+      dark: '#640000',
     },
     background: {
-      default: '#121212', // Глубокий чёрный фон
-      paper: '#1E1E1E', // Чуть светлее для карточек
+      default: '#121212',
+      paper: '#1E1E1E',
     },
     text: {
-      primary: '#F5F5F5', // Белый текст
-      secondary: '#B0B0B0', // Серый текст
+      primary: '#F5F5F5',
+      secondary: '#B0B0B0',
     },
   },
 });

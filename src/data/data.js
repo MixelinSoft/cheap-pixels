@@ -5,6 +5,7 @@ import search from '../assets/icons/menu/search.svg';
 
 import Home from '../components/pages/Home/Home';
 import Search from '../components/pages/Search/Search';
+import HotSales from '../components/pages/HotSales/HotSales';
 
 export const menuItems = [
   {
@@ -33,10 +34,11 @@ export const menuItems = [
   //   link: '/preferences',
   //   icon: 'deals',
   // },
-  // {
-  //   id: 4,
-  //   title: 'Hot Sales',
-  //   link: '/hot-sales',
-  //   icon: sales,
-  // },
+  {
+    id: 4,
+    title: 'Hot Sales',
+    link: '/hot-sales',
+    icon: sales,
+    component: HotSales,
+  },
 ];

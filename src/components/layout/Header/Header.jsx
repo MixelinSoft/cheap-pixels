@@ -16,6 +16,7 @@ const Header = () => {
       sx={{
         backgroundColor: 'background.default',
         borderRadius: '0 0 12px 12px',
+        height: '64px',
       }}
     >
       <Toolbar>
