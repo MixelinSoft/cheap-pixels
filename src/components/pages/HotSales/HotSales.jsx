@@ -30,7 +30,7 @@ const HotSales = () => {
     if (filtersLoaded) {
       dispatch(getDeals(filters));
     }
-  }, [dispatch, filters, filtersLoaded]);
+  }, [dispatch, filtersLoaded]);
 
   return (
     <>
