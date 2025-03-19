@@ -13,6 +13,7 @@ const HotSales = () => {
   // Get Deals From Store
   const deals = useSelector((state) => state.hotSales.bestDeals);
   // Get Filters From Store
+  const filtersLoaded = useSelector((state) => state.hotSales.filtersLoaded);
   const filters = useSelector((state) => state.hotSales.filters);
 
   useEffect(() => {
@@ -20,12 +21,17 @@ const HotSales = () => {
 
     if (storedFilters) {
       dispatch(hotSalesActions.setFilters(JSON.parse(storedFilters)));
+    } else {
+      dispatch(hotSalesActions.setFiltersLoaded(true)); // Если нет в localStorage, отмечаем, что фильтры загружены
     }
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getDeals(filters));
-  }, [dispatch]);
+    if (filtersLoaded) {
+      dispatch(getDeals(filters));
+    }
+  }, [dispatch, filters, filtersLoaded]);
+
   return (
     <>
       <HotSalesFilters />
