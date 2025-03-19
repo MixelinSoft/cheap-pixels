@@ -1,16 +1,34 @@
+import { stores } from '../../data/stores';
 // Impoert Dependencies
 import { createSlice } from '@reduxjs/toolkit';
 // Create Initial State
 const initialState = {
   bestDeals: [],
+  showFitlers: false,
+  filters: {
+    activeStores: Object.keys(stores).reduce((acc, key) => {
+      acc[key] = true; // по умолчанию все магазины активны
+      return acc;
+    }, {}),
+  },
 };
 // Create Slice
 export const hotSalesSlice = createSlice({
   name: 'hotSales',
   initialState: initialState,
   reducers: {
-    addBestDeals: (state, action) => {
-      state.bestDeals = action.payload;
+    addBestDeals: (state, { payload }) => {
+      state.bestDeals = payload;
+    },
+    setShowFilters: (state, { payload }) => {
+      state.showFitlers = payload;
+    },
+    setFilters(state, { payload }) {
+      state.filters = payload;
+    },
+    toggleStoreFilter: (state, { payload }) => {
+      state.filters.activeStores[payload] =
+        !state.filters.activeStores[payload];
     },
   },
 });

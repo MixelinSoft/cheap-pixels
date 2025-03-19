@@ -6,12 +6,14 @@ const api = axios.create({
   baseURL: 'https://www.cheapshark.com/api/1.0/',
 });
 
-export const getDeals = () => {
-  console.log('getDeals');
+export const getDeals = ({ activeStores }) => {
+  const stores = Object.keys(activeStores)
+    .filter((key) => activeStores[key])
+    .join(', ');
   return async (dispatch) => {
     try {
       const response = await api.get(
-        'deals?storeID=1, 7&sortBy=Savings&pageSize=10',
+        `deals?storeID=${stores}&sortBy=Savings&pageSize=10`,
       );
       dispatch(hotSalesActions.addBestDeals(response.data));
     } catch (error) {

@@ -4,41 +4,55 @@ import SaleCard from './SaleCard/SaleCard';
 import { Box } from '@mui/material';
 import HotSalesPanel from './HotSalesPanel/HotSalesPanel';
 import { getDeals } from '../../../services/web';
+import HotSalesFilters from './HotSalesFilters/HotSalesFilters';
+import { hotSalesActions } from '../../../store/slices/hotSalesSlice';
 
 const HotSales = () => {
   // Create Dispatch
   const dispatch = useDispatch();
   // Get Deals From Store
   const deals = useSelector((state) => state.hotSales.bestDeals);
+  // Get Filters From Store
+  const filters = useSelector((state) => state.hotSales.filters);
 
   useEffect(() => {
-    console.log('getGames');
-    dispatch(getDeals());
+    const storedFilters = localStorage.getItem('hot-sales-filters');
+
+    if (storedFilters) {
+      dispatch(hotSalesActions.setFilters(JSON.parse(storedFilters)));
+    }
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getDeals(filters));
   }, [dispatch]);
   return (
-    <Box
-      sx={{
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
-    >
-      <HotSalesPanel />
+    <>
+      <HotSalesFilters />
       <Box
         sx={{
-          marginTop: '80px',
-          paddingRight: '8px',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 2,
-          overflowY: 'auto',
-          flexGrow: 1,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
-        {deals.length > 0 &&
-          deals.map((deal) => <SaleCard game={deal} key={deal.dealID} />)}
+        <HotSalesPanel />
+        <Box
+          sx={{
+            marginTop: '80px',
+            paddingRight: '8px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: 2,
+            overflowY: 'auto',
+            flexGrow: 1,
+          }}
+        >
+          {deals.length > 0 &&
+            deals.map((deal) => <SaleCard game={deal} key={deal.dealID} />)}
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 
