@@ -16,7 +16,12 @@ const HotSalesPagination = () => {
   return (
     <Box>
       {count > 1 && (
-        <Pagination page={page} onChange={changeHandler} count={count} />
+        <Pagination
+          page={page}
+          onChange={changeHandler}
+          count={count}
+          size='small'
+        />
       )}
     </Box>
   );
