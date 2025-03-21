@@ -52,6 +52,13 @@ const theme = createTheme({
           color: '#B0B0B0',
           '&.Mui-selected': {
             color: '#F5F5F5',
+            backgroundColor: '#640000',
+            '&:hover': {
+              backgroundColor: '#FF1744',
+            },
+          },
+          '&:hover': {
+            color: '#F5F5F5',
             backgroundColor: '#FF1744',
           },
         },

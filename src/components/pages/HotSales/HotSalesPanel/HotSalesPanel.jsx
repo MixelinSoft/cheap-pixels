@@ -15,7 +15,7 @@ const HotSalesPanel = () => {
     <Card
       sx={{
         position: 'absolute',
-        top: '80px',
+        top: '72px',
         height: '64px',
         left: '16px',
         right: '16px',
