@@ -11,28 +11,44 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hotSalesActions } from '../../../../store/slices/hotSalesSlice';
 import { stores } from '../../../../data/stores';
 import { getDeals } from '../../../../services/web';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const HotSalesFilters = () => {
   // Create Dispatch
   const dispatch = useDispatch();
+  // Create Temp Filters State
+  const [tempFilters, setTempFilters] = useState(null);
+  // Get Show Filters Status From Store
+  const showFilters = useSelector((state) => state.hotSales.showFitlers);
   // Get Stores From Store
   const filters = useSelector((state) => state.hotSales.filters);
-
+  // Toggle Temp Filters
   const handleToggleFilterStores = (storeId) => {
-    dispatch(hotSalesActions.toggleStoreFilter(storeId));
+    setTempFilters({
+      ...tempFilters,
+      activeStores: {
+        ...tempFilters.activeStores,
+        [storeId]: !tempFilters.activeStores[storeId],
+      },
+    });
   };
   // Apply Filters
-  const apllyFilters = () => {
-    localStorage.setItem('hot-sales-filters', JSON.stringify(filters));
-    dispatch(getDeals(filters));
+  const applyFilters = () => {
+    dispatch(hotSalesActions.setFilters(tempFilters));
+    localStorage.setItem('hot-sales-filters', JSON.stringify(tempFilters));
+    dispatch(getDeals(tempFilters));
     dispatch(hotSalesActions.setShowFilters(false));
   };
-
-  const showFilters = useSelector((state) => state.hotSales.showFitlers);
+  // Show Filters Handler
   const showFiltersHandler = (value) => {
     dispatch(hotSalesActions.setShowFilters(value));
   };
+  // Set Temp Filters
+  useEffect(() => {
+    if (showFilters) {
+      setTempFilters(filters);
+    }
+  }, [showFilters, filters]);
 
   return (
     <ModalWindow show={showFilters} handler={showFiltersHandler}>
@@ -43,26 +59,30 @@ const HotSalesFilters = () => {
         <Box>
           <Typography variant={'h6'}>Stores</Typography>
           <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
-            {Object.keys(stores).map((storeId) => (
-              <FormControlLabel
-                key={storeId}
-                control={
-                  <Checkbox
-                    checked={filters.activeStores[storeId] || false}
-                    onChange={() => handleToggleFilterStores(storeId)}
-                  />
-                }
-                label={stores[storeId].name}
-              />
-            ))}
+            {tempFilters &&
+              Object.keys(stores).map((storeId) => (
+                <FormControlLabel
+                  key={storeId}
+                  control={
+                    <Checkbox
+                      checked={tempFilters.activeStores[storeId] || false}
+                      onChange={() => handleToggleFilterStores(storeId)}
+                    />
+                  }
+                  label={stores[storeId].name}
+                />
+              ))}
           </Box>
         </Box>
-        <Box>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}>
+          <Button variant='outlined' onClick={() => showFiltersHandler(false)}>
+            Cancel
+          </Button>
           <Button
-            onClick={apllyFilters}
+            sx={{ marginLeft: 2 }}
+            onClick={applyFilters}
             variant='contained'
             color='primary'
-            sx={{ marginTop: 2 }}
           >
             Apply
           </Button>

@@ -11,6 +11,7 @@ export const getDeals = ({ activeStores }) => {
     .filter((key) => activeStores[key])
     .join(', ');
   return async (dispatch) => {
+    dispatch(hotSalesActions.setLoading(true));
     try {
       const response = await api.get(
         `deals?storeID=${stores}&sortBy=Savings&pageSize=10`,
@@ -19,6 +20,7 @@ export const getDeals = ({ activeStores }) => {
     } catch (error) {
       console.log(error);
     }
+    dispatch(hotSalesActions.setLoading(false));
   };
 };
 

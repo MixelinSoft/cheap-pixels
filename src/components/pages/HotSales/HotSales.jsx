@@ -6,6 +6,7 @@ import HotSalesPanel from './HotSalesPanel/HotSalesPanel';
 import { getDeals } from '../../../services/web';
 import HotSalesFilters from './HotSalesFilters/HotSalesFilters';
 import { hotSalesActions } from '../../../store/slices/hotSalesSlice';
+import LoadingOverlay from '../../ui/LoadingOverlay/LoadingOverlay';
 
 const HotSales = () => {
   // Create Dispatch
@@ -15,6 +16,8 @@ const HotSales = () => {
   // Get Filters From Store
   const filtersLoaded = useSelector((state) => state.hotSales.filtersLoaded);
   const filters = useSelector((state) => state.hotSales.filters);
+  // Get Loading Status From Store
+  const loading = useSelector((state) => state.hotSales.loading);
 
   useEffect(() => {
     const storedFilters = localStorage.getItem('hot-sales-filters');
@@ -34,6 +37,7 @@ const HotSales = () => {
 
   return (
     <>
+      <LoadingOverlay show={loading} />
       <HotSalesFilters />
       <Box
         sx={{

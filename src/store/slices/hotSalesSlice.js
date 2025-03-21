@@ -3,6 +3,7 @@ import { stores } from '../../data/stores';
 import { createSlice } from '@reduxjs/toolkit';
 // Create Initial State
 const initialState = {
+  loading: false,
   bestDeals: [],
   showFitlers: false,
   filtersLoaded: false,
@@ -18,6 +19,9 @@ export const hotSalesSlice = createSlice({
   name: 'hotSales',
   initialState: initialState,
   reducers: {
+    setLoading: (state, { payload }) => {
+      state.loading = payload;
+    },
     addBestDeals: (state, { payload }) => {
       state.bestDeals = payload;
     },
