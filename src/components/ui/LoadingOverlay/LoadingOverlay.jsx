@@ -6,7 +6,7 @@ const LoadingOverlay = ({ show }) => {
     <Box
       sx={{
         position: 'fixed',
-        top: 0,
+        top: '64px',
         right: 0,
         bottom: 0,
         left: 0,
@@ -14,12 +14,14 @@ const LoadingOverlay = ({ show }) => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 15, 0, 0.75)',
+        backgroundColor: 'rgba(0, 0, 0, 0.75)',
         cursor: 'wait',
         opacity: show ? 1 : 0,
         visibility: show ? 'visible' : 'hidden',
         transition: 'opacity 0.3s ease, visibility 0.5s ease',
+        zIndex: 100,
       }}
+      W
     >
       <Box
         sx={{

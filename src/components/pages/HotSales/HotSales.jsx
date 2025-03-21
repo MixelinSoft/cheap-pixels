@@ -7,7 +7,6 @@ import { getDeals } from '../../../services/web';
 import HotSalesFilters from './HotSalesFilters/HotSalesFilters';
 import { hotSalesActions } from '../../../store/slices/hotSalesSlice';
 import LoadingOverlay from '../../ui/LoadingOverlay/LoadingOverlay';
-import HotSalesPagination from './HotSalesPagination/HotSalesPagination';
 
 const HotSales = () => {
   // Create Dispatch
