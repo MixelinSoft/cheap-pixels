@@ -7,6 +7,7 @@ import { getDeals } from '../../../services/web';
 import HotSalesFilters from './HotSalesFilters/HotSalesFilters';
 import { hotSalesActions } from '../../../store/slices/hotSalesSlice';
 import LoadingOverlay from '../../ui/LoadingOverlay/LoadingOverlay';
+import HotSalesPagination from './HotSalesPagination/HotSalesPagination';
 
 const HotSales = () => {
   // Create Dispatch
@@ -23,15 +24,38 @@ const HotSales = () => {
     const storedFilters = localStorage.getItem('hot-sales-filters');
 
     if (storedFilters) {
-      dispatch(hotSalesActions.setFilters(JSON.parse(storedFilters)));
+      const parsedFilters = JSON.parse(storedFilters);
+
+      // Объединяем фильтры из `localStorage` с актуальными `filters`
+      const updatedFilters = {
+        ...filters,
+        ...parsedFilters,
+        activeStores: {
+          ...filters.activeStores,
+          ...parsedFilters.activeStores,
+        },
+      };
+      if (JSON.stringify(parsedFilters) !== JSON.stringify(updatedFilters)) {
+        localStorage.setItem(
+          'hot-sales-filters',
+          JSON.stringify(updatedFilters),
+        );
+        dispatch(hotSalesActions.setFilters(updatedFilters));
+      } else {
+        dispatch(hotSalesActions.setFilters(parsedFilters));
+      }
     } else {
-      dispatch(hotSalesActions.setFiltersLoaded(true)); // Если нет в localStorage, отмечаем, что фильтры загружены
+      localStorage.setItem('hot-sales-filters', JSON.stringify(filters));
+      dispatch(hotSalesActions.setFilters(filters));
     }
+
+    dispatch(hotSalesActions.setFiltersLoaded(true));
   }, [dispatch]);
 
   useEffect(() => {
     if (filtersLoaded) {
-      dispatch(getDeals(filters));
+      dispatch(getDeals(filters, 1));
+      dispatch(hotSalesActions.setCurrentPage(1));
     }
   }, [dispatch, filtersLoaded]);
 

@@ -2,6 +2,7 @@ import { AppBar, Box, Card, IconButton, Toolbar } from '@mui/material';
 import filtersIcon from '../../../../assets/icons/filters.svg';
 import { useDispatch } from 'react-redux';
 import { hotSalesActions } from '../../../../store/slices/hotSalesSlice';
+import HotSalesPagination from '../HotSalesPagination/HotSalesPagination';
 
 const HotSalesPanel = () => {
   // Create Dispatch
@@ -20,10 +21,11 @@ const HotSalesPanel = () => {
         right: '16px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         backgroundColor: 'background.paper',
       }}
     >
+      <HotSalesPagination />
       <IconButton onClick={showFiltersHandler}>
         <img src={filtersIcon} alt='Filters Icon' width='32px' height='32px' />
       </IconButton>

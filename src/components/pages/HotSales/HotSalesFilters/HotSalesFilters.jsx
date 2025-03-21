@@ -4,6 +4,8 @@ import {
   Checkbox,
   Divider,
   FormControlLabel,
+  MenuItem,
+  Select,
   Typography,
 } from '@mui/material';
 import ModalWindow from '../../../ui/ModalWindow/ModalWindow';
@@ -36,7 +38,8 @@ const HotSalesFilters = () => {
   const applyFilters = () => {
     dispatch(hotSalesActions.setFilters(tempFilters));
     localStorage.setItem('hot-sales-filters', JSON.stringify(tempFilters));
-    dispatch(getDeals(tempFilters));
+    dispatch(getDeals(tempFilters, 1));
+    dispatch(hotSalesActions.setCurrentPage(1));
     dispatch(hotSalesActions.setShowFilters(false));
   };
   // Show Filters Handler
@@ -52,15 +55,17 @@ const HotSalesFilters = () => {
 
   return (
     <ModalWindow show={showFilters} handler={showFiltersHandler}>
-      <Box>
-        <Typography variant={'h5'}>Filters: </Typography>
-        <Divider />
-        {/* Stores Filter */}
+      {tempFilters && (
         <Box>
-          <Typography variant={'h6'}>Stores</Typography>
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
-            {tempFilters &&
-              Object.keys(stores).map((storeId) => (
+          <Typography variant={'h5'}>Filters: </Typography>
+          <Divider />
+          {/* Stores Filter */}
+          <Box>
+            <Typography variant={'h6'}>Stores</Typography>
+            <Box
+              sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}
+            >
+              {Object.keys(stores).map((storeId) => (
                 <FormControlLabel
                   key={storeId}
                   control={
@@ -72,22 +77,52 @@ const HotSalesFilters = () => {
                   label={stores[storeId].name}
                 />
               ))}
+            </Box>
+          </Box>
+          <Divider />
+          {/* Items On Page */}
+          <Box>
+            <Typography variant={'h6'}>Games On Page</Typography>
+
+            <Select
+              value={tempFilters.pageSize}
+              onChange={(e) =>
+                setTempFilters((prev) => ({
+                  ...prev,
+                  pageSize: e.target.value,
+                }))
+              }
+            >
+              <MenuItem value='10'>10</MenuItem>
+              <MenuItem value='15'>15</MenuItem>
+              <MenuItem value='20'>20</MenuItem>
+              <MenuItem value='25'>25</MenuItem>
+              <MenuItem value='40'>40</MenuItem>
+              <MenuItem value='60'>60</MenuItem>
+            </Select>
+          </Box>
+          <Divider />
+          {/* Buttons */}
+          <Box
+            sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}
+          >
+            <Button
+              variant='outlined'
+              onClick={() => showFiltersHandler(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              sx={{ marginLeft: 2 }}
+              onClick={applyFilters}
+              variant='contained'
+              color='primary'
+            >
+              Apply
+            </Button>
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}>
-          <Button variant='outlined' onClick={() => showFiltersHandler(false)}>
-            Cancel
-          </Button>
-          <Button
-            sx={{ marginLeft: 2 }}
-            onClick={applyFilters}
-            variant='contained'
-            color='primary'
-          >
-            Apply
-          </Button>
-        </Box>
-      </Box>
+      )}
     </ModalWindow>
   );
 };

@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: 'https://www.cheapshark.com/api/1.0/',
 });
 
-export const getDeals = ({ activeStores }) => {
+export const getDeals = ({ activeStores, pageSize }, page) => {
   const stores = Object.keys(activeStores)
     .filter((key) => activeStores[key])
     .join(', ');
@@ -14,9 +14,14 @@ export const getDeals = ({ activeStores }) => {
     dispatch(hotSalesActions.setLoading(true));
     try {
       const response = await api.get(
-        `deals?storeID=${stores}&sortBy=Savings&pageSize=10`,
+        `deals?storeID=${stores}&sortBy=Savings&pageNumber=${
+          page - 1
+        }&pageSize=${pageSize}`,
       );
       dispatch(hotSalesActions.addBestDeals(response.data));
+      dispatch(
+        hotSalesActions.setTotalPages(response.headers['x-total-page-count']),
+      );
     } catch (error) {
       console.log(error);
     }

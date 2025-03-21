@@ -5,13 +5,16 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   loading: false,
   bestDeals: [],
+  totalPages: 0,
+  currentPage: 1,
   showFitlers: false,
   filtersLoaded: false,
   filters: {
     activeStores: Object.keys(stores).reduce((acc, key) => {
-      acc[key] = true; // по умолчанию все магазины активны
+      acc[key] = true;
       return acc;
     }, {}),
+    pageSize: '10',
   },
 };
 // Create Slice
@@ -24,6 +27,12 @@ export const hotSalesSlice = createSlice({
     },
     addBestDeals: (state, { payload }) => {
       state.bestDeals = payload;
+    },
+    setTotalPages: (state, { payload }) => {
+      state.totalPages = payload;
+    },
+    setCurrentPage: (state, { payload }) => {
+      state.currentPage = payload;
     },
     setShowFilters: (state, { payload }) => {
       state.showFitlers = payload;
