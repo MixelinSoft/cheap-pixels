@@ -72,7 +72,7 @@ const HotSales = () => {
         <HotSalesPanel />
         <Box
           sx={{
-            marginTop: '80px',
+            marginTop: '64px',
             paddingRight: '8px',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
