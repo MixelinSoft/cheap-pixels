@@ -75,8 +75,9 @@ const HotSales = () => {
             marginTop: '80px',
             paddingRight: '8px',
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 2,
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: '16px',
+            justifyContent: 'space-around',
             overflowY: 'auto',
             flexGrow: 1,
           }}

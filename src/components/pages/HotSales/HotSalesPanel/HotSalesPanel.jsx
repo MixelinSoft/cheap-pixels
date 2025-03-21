@@ -22,7 +22,6 @@ const HotSalesPanel = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: 'background.paper',
       }}
     >
       <HotSalesPagination />

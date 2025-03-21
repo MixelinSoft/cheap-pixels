@@ -6,7 +6,7 @@ const SaleCard = ({ game }) => {
   return (
     <Card
       sx={{
-        height: '360px',
+        height: '300px',
         display: 'flex',
         flexDirection: 'column',
       }}
