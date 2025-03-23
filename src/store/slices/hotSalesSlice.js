@@ -15,8 +15,10 @@ const initialState = {
       return acc;
     }, {}),
     pageSize: '10',
+    sortBy: 'Savings',
   },
 };
+
 // Create Slice
 export const hotSalesSlice = createSlice({
   name: 'hotSales',

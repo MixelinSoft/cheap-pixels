@@ -36,6 +36,7 @@ const HotSalesFilters = () => {
   };
   // Apply Filters
   const applyFilters = () => {
+    console.log(tempFilters);
     dispatch(hotSalesActions.setFilters(tempFilters));
     localStorage.setItem('hot-sales-filters', JSON.stringify(tempFilters));
     dispatch(getDeals(tempFilters, 1));
@@ -110,6 +111,20 @@ const HotSalesFilters = () => {
           {/* Sorting */}
           <Box sx={{ marginTop: 1, marginBottom: 1 }}>
             <Typography variant={'h6'}>Sorting:</Typography>
+            <Select
+              size='small'
+              value={tempFilters.sortBy}
+              onChange={(e) =>
+                setTempFilters((prev) => ({
+                  ...prev,
+                  sortBy: e.target.value,
+                }))
+              }
+            >
+              <MenuItem value='Savings'>Savings</MenuItem>
+              <MenuItem value='Title'>Title</MenuItem>
+              <MenuItem value='Price'>Price</MenuItem>
+            </Select>
           </Box>
           <Divider />
           {/* Buttons */}
