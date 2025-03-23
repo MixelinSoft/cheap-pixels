@@ -17,7 +17,7 @@ const HotSalesPagination = ({ containerRef }) => {
   return (
     <Box
       sx={{
-        position: 'absolute',
+        position: 'fixed',
         bottom: '32px',
         left: '50%',
         transform: 'translateX(-50%)',

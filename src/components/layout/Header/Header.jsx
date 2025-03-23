@@ -19,7 +19,11 @@ const Header = () => {
         height: '64px',
       }}
     >
-      <Toolbar>
+      <Toolbar
+        sx={{
+          height: '64px',
+        }}
+      >
         <IconButton
           size='large'
           edge='start'

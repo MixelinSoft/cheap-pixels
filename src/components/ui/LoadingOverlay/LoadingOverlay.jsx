@@ -21,7 +21,6 @@ const LoadingOverlay = ({ show }) => {
         transition: 'opacity 0.3s ease, visibility 0.5s ease',
         zIndex: 100,
       }}
-      W
     >
       <Box
         sx={{

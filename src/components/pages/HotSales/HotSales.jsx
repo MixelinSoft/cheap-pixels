@@ -77,13 +77,12 @@ const HotSales = () => {
         <Box
           ref={dealsRef}
           sx={{
-            marginTop: '64px',
+            paddingTop: '64px',
             paddingRight: '8px',
             paddingBottom: '64px',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             gap: '16px',
-            justifyContent: 'space-around',
             overflowY: 'auto',
             flexGrow: 1,
           }}
