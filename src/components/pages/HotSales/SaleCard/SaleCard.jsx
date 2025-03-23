@@ -1,8 +1,12 @@
-import { Box, Card, Typography } from '@mui/material';
+import { Box, Card, Divider, Link, Typography } from '@mui/material';
 import StoreIcon from '../../../ui/StoreIcon/StoreIcon';
+import metacriticLogo from '../../../../assets/icons/MetaCritic.svg';
+import steamLogo from '../../../../assets/icons/stores/Steam.svg';
+import downloadIcon from '../../../../assets/icons/download.svg';
 
 const SaleCard = ({ game }) => {
   const savings = `-${Math.round(game.savings)}%`;
+  const releaseDate = new Date(game.releaseDate * 1000).toLocaleDateString();
   return (
     <Card
       sx={{
@@ -42,6 +46,7 @@ const SaleCard = ({ game }) => {
           {savings}
         </Typography>
       </Box>
+
       {/* Card Content */}
       <Box
         sx={{
@@ -53,21 +58,135 @@ const SaleCard = ({ game }) => {
         }}
       >
         {/* Card Text and Links */}
-        <Box sx={{ display: 'flex', alignItems: 'center', minWidth: '50%' }}>
-          <StoreIcon store={game.storeID} />
-          <Typography
-            sx={{
-              marginLeft: '4px',
-              fontSize: '16px',
-              color: 'text.secondary',
-              textDecoration: 'line-through',
-            }}
+        <Box sx={{ display: 'flex', flexDirection: 'column', minWidth: '50%' }}>
+          {/* Release Date */}
+          <Typography>
+            {game.releaseDate !== 0 ? `Release Date: ${releaseDate}` : '\u00A0'}
+          </Typography>
+          {/* Store Link and Price */}
+          <Link
+            href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
+            target='_blank'
+            sx={{ display: 'flex', alignItems: 'center' }}
           >
-            {game.normalPrice}
-          </Typography>
-          <Typography sx={{ marginLeft: '4px', fontSize: '16px' }}>
-            {game.salePrice}$
-          </Typography>
+            <StoreIcon store={game.storeID} />
+            <Typography
+              sx={{
+                marginLeft: '4px',
+                fontSize: '16px',
+                color: 'text.secondary',
+                textDecoration: 'line-through',
+              }}
+            >
+              {game.normalPrice}
+            </Typography>
+            <Typography sx={{ marginLeft: '4px', fontSize: '16px' }}>
+              {game.salePrice}$
+            </Typography>
+          </Link>
+
+          {/* Metacritic */}
+          {game.metacriticScore > 0 && (
+            <Link
+              href={`https://www.metacritic.com${game.metacriticLink}`}
+              target='_blank'
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                marginTop: 2,
+                cursor: 'pointer',
+              }}
+            >
+              <img src={metacriticLogo} width='32px' height='32px' />
+              <Typography
+                sx={{
+                  marginLeft: '4px',
+                  fontSize: '16px',
+                  color: 'text.secondary',
+                }}
+              >
+                {game.metacriticScore}/100
+              </Typography>
+            </Link>
+          )}
+          {/* Steam Rating */}
+          {game.steamRatingText && (
+            <Link
+              href={`https://store.steampowered.com/app/${game.steamAppID}`}
+              target='_blank'
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                marginTop: 0.5,
+                cursor: 'pointer',
+              }}
+            >
+              <Divider />
+              {/* Steam Rating */}
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <img
+                  src={steamLogo}
+                  alt='Steam Logo'
+                  width='32px'
+                  height='32px'
+                />
+                <Typography
+                  sx={{
+                    marginLeft: '4px',
+                    fontSize: '16px',
+                    color: 'text.secondary',
+                  }}
+                >
+                  {game.steamRatingText}
+                </Typography>
+              </Box>
+              {/* Steam Rating Percent */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginLeft: '32px',
+                }}
+              >
+                <Typography
+                  sx={{
+                    display: 'block',
+                    marginLeft: '4px',
+                    fontSize: '16px',
+                    color: 'text.secondary',
+                  }}
+                >
+                  {game.steamRatingPercent}/100
+                </Typography>
+              </Box>
+              {/* Steam Rating Count */}
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  marginLeft: '36px',
+                }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <img
+                    src={downloadIcon}
+                    alt='Download Icon'
+                    width='16px'
+                    height='16px'
+                    style={{ marginRight: '4px', marginBottom: '4px' }}
+                  />
+                  <Typography
+                    sx={{
+                      fontSize: '16px',
+                      color: 'text.secondary',
+                    }}
+                  >
+                    {game.steamRatingCount}
+                  </Typography>
+                </Box>
+              </Box>
+            </Link>
+          )}
         </Box>
         {/* Card Image */}
         <Box

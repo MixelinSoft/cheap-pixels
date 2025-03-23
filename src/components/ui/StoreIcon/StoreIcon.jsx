@@ -26,8 +26,8 @@ const StoreIcon = ({ store, link, title }) => {
         <img
           src={stores[store].icon}
           alt='Store Icon'
-          width='32px'
-          height='32px'
+          width='40px'
+          height='40px'
         />
       </Box>
       {title && (
