@@ -33,6 +33,11 @@ const HotSalesPagination = ({ containerRef }) => {
       >
         {count > 1 && (
           <Pagination
+            sx={{
+              minWidth: '300px',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
             page={page}
             onChange={changeHandler}
             count={count}
