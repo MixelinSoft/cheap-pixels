@@ -1,7 +1,7 @@
 import { Box, Typography } from '@mui/material';
 import { stores } from '../../../data/stores';
 
-const StoreIcon = ({ store, link, title }) => {
+const StoreIcon = ({ store, title }) => {
   return (
     <Box
       sx={{

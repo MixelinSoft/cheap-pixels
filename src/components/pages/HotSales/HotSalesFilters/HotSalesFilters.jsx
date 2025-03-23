@@ -60,10 +60,14 @@ const HotSalesFilters = () => {
           <Typography variant={'h5'}>Filters: </Typography>
           <Divider />
           {/* Stores Filter */}
-          <Box>
+          <Box sx={{ marginTop: 1, marginBottom: 1 }}>
             <Typography variant={'h6'}>Stores</Typography>
             <Box
-              sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(100px, 1fr))',
+                gap: 0.5,
+              }}
             >
               {Object.keys(stores).map((storeId) => (
                 <FormControlLabel
@@ -81,10 +85,11 @@ const HotSalesFilters = () => {
           </Box>
           <Divider />
           {/* Items On Page */}
-          <Box>
-            <Typography variant={'h6'}>Games On Page</Typography>
+          <Box sx={{ marginTop: 1, marginBottom: 1 }}>
+            <Typography variant={'h6'}>Games On Page:</Typography>
 
             <Select
+              size='small'
               value={tempFilters.pageSize}
               onChange={(e) =>
                 setTempFilters((prev) => ({
@@ -100,6 +105,11 @@ const HotSalesFilters = () => {
               <MenuItem value='40'>40</MenuItem>
               <MenuItem value='60'>60</MenuItem>
             </Select>
+          </Box>
+          <Divider />
+          {/* Sorting */}
+          <Box sx={{ marginTop: 1, marginBottom: 1 }}>
+            <Typography variant={'h6'}>Sorting:</Typography>
           </Box>
           <Divider />
           {/* Buttons */}

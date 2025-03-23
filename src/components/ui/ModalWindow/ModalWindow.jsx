@@ -5,7 +5,7 @@ const ModalWindow = ({ children, show, handler }) => {
     handler(false);
   };
   return (
-    <Dialog open={show} onClose={closeHandler} PaperComponent={Card}>
+    <Dialog fullWidth open={show} onClose={closeHandler} PaperComponent={Card}>
       {children}
     </Dialog>
   );
