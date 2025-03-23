@@ -68,7 +68,14 @@ const SaleCard = ({ game }) => {
           <Link
             href={`https://www.cheapshark.com/redirect?dealID=${game.dealID}`}
             target='_blank'
-            sx={{ display: 'flex', alignItems: 'center' }}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              width: 'fit-content',
+              padding: '8px',
+              border: '1px solid secondary.main',
+              backgroundColor: 'secondary.dark',
+            }}
           >
             <StoreIcon store={game.storeID} />
             <Typography

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SaleCard from './SaleCard/SaleCard';
-import { Box } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 import HotSalesPanel from './HotSalesPanel/HotSalesPanel';
 import { getDeals } from '../../../services/web';
 import HotSalesFilters from './HotSalesFilters/HotSalesFilters';
@@ -80,15 +80,34 @@ const HotSales = () => {
             paddingTop: '64px',
             paddingRight: '8px',
             paddingBottom: '64px',
-            display: 'grid',
+            display: deals.length > 0 ? 'grid' : 'block',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             gap: '16px',
             overflowY: 'auto',
             flexGrow: 1,
           }}
         >
-          {deals.length > 0 &&
-            deals.map((deal) => <SaleCard game={deal} key={deal.dealID} />)}
+          {deals.length > 0 ? (
+            deals.map((deal) => <SaleCard game={deal} key={deal.dealID} />)
+          ) : (
+            <Card
+              sx={{
+                height: '64px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Typography
+                variant='h5'
+                sx={{
+                  color: 'text.primary',
+                }}
+              >
+                Games not found :(
+              </Typography>
+            </Card>
+          )}
         </Box>
       </Box>
     </>

@@ -5,12 +5,11 @@ const StoreIcon = ({ store, title }) => {
   return (
     <Box
       sx={{
-        padding: '4px',
+        // padding: '4px',
         borderRadius: '4px',
         display: 'flex',
         alignItems: 'center',
         cursor: 'pointer',
-        backgroundColor: 'secondary.dark',
       }}
     >
       <Box

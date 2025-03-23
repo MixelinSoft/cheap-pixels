@@ -30,7 +30,7 @@ const HotSalesSorting = () => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>
       <Select
-        sx={{ width: '96px' }}
+        sx={{ minWidth: '96px' }}
         value={filters.sortBy}
         onChange={sottingHandler}
       >
@@ -62,8 +62,20 @@ const HotSalesSorting = () => {
           ↓
         </Box>
         <Box sx={{ fontSize: '12px' }}>
-          <Box>{filters.sortBy === 'Title' ? 'A' : '0'}</Box>
-          <Box>{filters.sortBy === 'Title' ? 'Z' : '9'}</Box>
+          <Box>
+            {filters.sortBy === 'Title'
+              ? 'A'
+              : filters.sortBy === 'Price'
+              ? '0'
+              : '9'}
+          </Box>
+          <Box>
+            {filters.sortBy === 'Title'
+              ? 'Z'
+              : filters.sortBy === 'Price'
+              ? '9'
+              : '0'}
+          </Box>
         </Box>
       </IconButton>
     </Box>

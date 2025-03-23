@@ -15,23 +15,23 @@ const HotSalesPagination = ({ containerRef }) => {
     containerRef.current.scrollTo({ top: 0, behavior: 'smooth' });
   };
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        bottom: '32px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-      }}
-    >
-      <Card
+    count > 1 && (
+      <Box
         sx={{
-          height: '16px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          position: 'fixed',
+          bottom: '32px',
+          left: '50%',
+          transform: 'translateX(-50%)',
         }}
       >
-        {count > 1 && (
+        <Card
+          sx={{
+            height: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Pagination
             sx={{
               minWidth: '300px',
@@ -43,9 +43,9 @@ const HotSalesPagination = ({ containerRef }) => {
             count={count}
             size='small'
           />
-        )}
-      </Card>
-    </Box>
+        </Card>
+      </Box>
+    )
   );
 };
 
