@@ -24,7 +24,7 @@ const HotSalesPanel = () => {
         justifyContent: 'space-between',
       }}
     >
-      <HotSalesPagination />
+      {/* <HotSalesPagination /> */}
       <IconButton onClick={showFiltersHandler}>
         <img src={filtersIcon} alt='Filters Icon' width='32px' height='32px' />
       </IconButton>

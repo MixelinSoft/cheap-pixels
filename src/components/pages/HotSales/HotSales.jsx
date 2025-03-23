@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import SaleCard from './SaleCard/SaleCard';
 import { Box } from '@mui/material';
@@ -7,6 +7,7 @@ import { getDeals } from '../../../services/web';
 import HotSalesFilters from './HotSalesFilters/HotSalesFilters';
 import { hotSalesActions } from '../../../store/slices/hotSalesSlice';
 import LoadingOverlay from '../../ui/LoadingOverlay/LoadingOverlay';
+import HotSalesPagination from './HotSalesPagination/HotSalesPagination';
 
 const HotSales = () => {
   // Create Dispatch
@@ -18,6 +19,8 @@ const HotSales = () => {
   const filters = useSelector((state) => state.hotSales.filters);
   // Get Loading Status From Store
   const loading = useSelector((state) => state.hotSales.loading);
+
+  const dealsRef = useRef(null);
 
   useEffect(() => {
     const storedFilters = localStorage.getItem('hot-sales-filters');
@@ -70,10 +73,13 @@ const HotSales = () => {
         }}
       >
         <HotSalesPanel />
+        <HotSalesPagination containerRef={dealsRef} />
         <Box
+          ref={dealsRef}
           sx={{
             marginTop: '64px',
             paddingRight: '8px',
+            paddingBottom: '64px',
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             gap: '16px',
