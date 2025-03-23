@@ -1,7 +1,7 @@
 import { Box, Card, Divider, Link, Typography } from '@mui/material';
 import StoreIcon from '../../../ui/StoreIcon/StoreIcon';
 import metacriticLogo from '../../../../assets/icons/MetaCritic.svg';
-import steamLogo from '../../../../assets/icons/stores/Steam.svg';
+import steamLogo from '../../../../assets/icons/stores/steam.svg';
 import downloadIcon from '../../../../assets/icons/download.svg';
 
 const SaleCard = ({ game }) => {

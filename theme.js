@@ -64,6 +64,18 @@ const theme = createTheme({
         },
       },
     },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: '#B0B0B0',
+          textDecoration: 'none',
+          '&:hover': {
+            color: '#B0B0B0',
+            textDecoration: 'underline',
+          },
+        },
+      },
+    },
   },
   palette: {
     mode: 'dark',
