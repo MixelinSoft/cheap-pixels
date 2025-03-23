@@ -81,7 +81,7 @@ const HotSales = () => {
             paddingRight: '8px',
             paddingBottom: '64px',
             display: deals.length > 0 ? 'grid' : 'block',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
             gap: '16px',
             overflowY: 'auto',
             flexGrow: 1,

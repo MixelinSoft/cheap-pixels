@@ -26,13 +26,23 @@ const HotSalesFilters = () => {
   const filters = useSelector((state) => state.hotSales.filters);
   // Toggle Temp Filters
   const handleToggleFilterStores = (storeId) => {
-    setTempFilters({
-      ...tempFilters,
-      activeStores: {
-        ...tempFilters.activeStores,
-        [storeId]: !tempFilters.activeStores[storeId],
-      },
-    });
+    if (storeId === 'all') {
+      setTempFilters({
+        ...tempFilters,
+        activeStores: Object.keys(stores).reduce((acc, key) => {
+          acc[key] = true;
+          return acc;
+        }, {}),
+      });
+    } else {
+      setTempFilters({
+        ...tempFilters,
+        activeStores: {
+          ...tempFilters.activeStores,
+          [storeId]: !tempFilters.activeStores[storeId],
+        },
+      });
+    }
   };
   // Apply Filters
   const applyFilters = () => {
@@ -82,6 +92,16 @@ const HotSalesFilters = () => {
                   label={stores[storeId].name}
                 />
               ))}
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+              <Button
+                sx={{ marginTop: 1 }}
+                variant='outlined'
+                size='small'
+                onClick={() => handleToggleFilterStores('all')}
+              >
+                Reset
+              </Button>
             </Box>
           </Box>
           <Divider />
