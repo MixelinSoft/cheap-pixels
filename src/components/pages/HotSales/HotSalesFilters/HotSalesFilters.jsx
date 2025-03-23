@@ -108,25 +108,6 @@ const HotSalesFilters = () => {
             </Select>
           </Box>
           <Divider />
-          {/* Sorting */}
-          <Box sx={{ marginTop: 1, marginBottom: 1 }}>
-            <Typography variant={'h6'}>Sorting:</Typography>
-            <Select
-              size='small'
-              value={tempFilters.sortBy}
-              onChange={(e) =>
-                setTempFilters((prev) => ({
-                  ...prev,
-                  sortBy: e.target.value,
-                }))
-              }
-            >
-              <MenuItem value='Savings'>Savings</MenuItem>
-              <MenuItem value='Title'>Title</MenuItem>
-              <MenuItem value='Price'>Price</MenuItem>
-            </Select>
-          </Box>
-          <Divider />
           {/* Buttons */}
           <Box
             sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 2 }}

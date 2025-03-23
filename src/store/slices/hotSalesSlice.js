@@ -16,6 +16,7 @@ const initialState = {
     }, {}),
     pageSize: '10',
     sortBy: 'Savings',
+    sortOrder: 0,
   },
 };
 
@@ -49,6 +50,12 @@ export const hotSalesSlice = createSlice({
     toggleStoreFilter: (state, { payload }) => {
       state.filters.activeStores[payload] =
         !state.filters.activeStores[payload];
+    },
+    setSortBy: (state, { payload }) => {
+      state.filters.sortBy = payload;
+    },
+    setSortOrder: (state, { payload }) => {
+      state.filters.sortOrder = payload;
     },
   },
 });
