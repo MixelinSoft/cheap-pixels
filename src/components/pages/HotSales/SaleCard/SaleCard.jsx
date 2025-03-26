@@ -24,6 +24,9 @@ const SaleCard = ({ game }) => {
             backgroundColor: 'background.light',
             boxShadow: '0px 0px 32px #640000',
           },
+          '&:hover .thumb': {
+            transform: 'scale(1.03)',
+          },
         }}
       >
         {/* Card Sale Badge */}
@@ -56,14 +59,17 @@ const SaleCard = ({ game }) => {
           }}
         >
           <img
+            class='thumb'
             loading='lazy'
             src={game.thumb}
             alt={`${game.title} Thumb`}
             height='113px'
             style={{
+              // transform: 'scale(1)',
               maxWidth: '100%',
               objectFit: 'contain',
               boxShadow: '0px 0px 16px #640000',
+              transition: 'transform 0.2s ease-in-out',
             }}
           />
         </Box>
