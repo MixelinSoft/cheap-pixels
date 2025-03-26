@@ -35,7 +35,7 @@ const HotSalesPagination = ({ containerRef }) => {
         >
           <Pagination
             sx={{
-              minWidth: '300px',
+              minWidth: '360px',
               display: 'flex',
               justifyContent: 'center',
             }}

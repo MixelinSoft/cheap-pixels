@@ -4,7 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 // Create Initial State
 const initialState = {
   loading: false,
-  bestDeals: [],
+  bestDeals: null,
   totalPages: 0,
   currentPage: 1,
   showFitlers: false,

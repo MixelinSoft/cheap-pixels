@@ -9,7 +9,8 @@ const HotSalesSorting = () => {
   // Get Filters From Store
   const filters = useSelector((state) => state.hotSales.filters);
   // Sorting Handler
-  const sottingHandler = (event) => {
+  const sortingHandler = (event) => {
+    dispatch(hotSalesActions.setCurrentPage(1));
     dispatch(hotSalesActions.setSortBy(event.target.value));
     dispatch(getDeals({ ...filters, sortBy: event.target.value }, 1));
     localStorage.setItem(
@@ -20,6 +21,7 @@ const HotSalesSorting = () => {
   // Order Handler
   const orderHandler = () => {
     const order = filters.sortOrder === 0 ? 1 : 0;
+    dispatch(hotSalesActions.setCurrentPage(1));
     dispatch(hotSalesActions.setSortOrder(order));
     dispatch(getDeals({ ...filters, sortOrder: order }, 1));
     localStorage.setItem(
@@ -32,7 +34,7 @@ const HotSalesSorting = () => {
       <Select
         sx={{ minWidth: '96px' }}
         value={filters.sortBy}
-        onChange={sottingHandler}
+        onChange={sortingHandler}
       >
         <MenuItem value='Savings'>Savings</MenuItem>
         <MenuItem value='Title'>Title</MenuItem>

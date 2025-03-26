@@ -80,15 +80,15 @@ const HotSales = () => {
             paddingTop: '64px',
             // paddingRight: '8px',
             paddingBottom: '64px',
-            display: deals.length > 0 ? 'grid' : 'block',
+            display: deals && deals.length > 0 ? 'grid' : 'block',
             gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             overflowY: 'auto',
             flexGrow: 1,
           }}
         >
-          {deals.length > 0 ? (
+          {deals && deals.length > 0 ? (
             deals.map((deal) => <SaleCard game={deal} key={deal.dealID} />)
-          ) : (
+          ) : deals && deals.length === 0 ? (
             <Card
               sx={{
                 height: '64px',
@@ -103,9 +103,11 @@ const HotSales = () => {
                   color: 'text.primary',
                 }}
               >
-                Games not found :(
+                Games not found
               </Typography>
             </Card>
+          ) : (
+            ''
           )}
         </Box>
       </Box>
