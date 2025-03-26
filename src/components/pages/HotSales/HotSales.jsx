@@ -78,11 +78,10 @@ const HotSales = () => {
           ref={dealsRef}
           sx={{
             paddingTop: '64px',
-            paddingRight: '8px',
+            // paddingRight: '8px',
             paddingBottom: '64px',
             display: deals.length > 0 ? 'grid' : 'block',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '16px',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
             overflowY: 'auto',
             flexGrow: 1,
           }}

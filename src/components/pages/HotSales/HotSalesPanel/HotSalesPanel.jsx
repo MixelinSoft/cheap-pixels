@@ -19,10 +19,11 @@ const HotSalesPanel = () => {
         top: '72px',
         height: '64px',
         left: '16px',
-        right: '16px',
+        right: '28px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        zIndex: 2,
       }}
     >
       <HotSalesSorting />

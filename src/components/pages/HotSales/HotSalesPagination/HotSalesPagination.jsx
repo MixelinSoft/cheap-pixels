@@ -22,11 +22,12 @@ const HotSalesPagination = ({ containerRef }) => {
           bottom: '32px',
           left: '50%',
           transform: 'translateX(-50%)',
+          zIndex: 2,
         }}
       >
         <Card
           sx={{
-            height: '16px',
+            height: '40px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -41,7 +42,7 @@ const HotSalesPagination = ({ containerRef }) => {
             page={page}
             onChange={changeHandler}
             count={count}
-            size='small'
+            size='medium'
           />
         </Card>
       </Box>
